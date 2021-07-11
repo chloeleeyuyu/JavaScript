@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            vertical-align: bottom;
+        }
+        img{
+            width: 100%;
+        }
+        .pic-b{
+            width: 60%;
+        }
+        .grid-flex{
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .grid-2{
+            width: calc(100% / 2);
+            height: 100vh;
+        }
+        .grid-3{
+            width: calc(100% / 3);
+            cursor: pointer;
+        }
+        h1{
+            width: 4em;
+            position: absolute;
+            top: 4em;
+            left: calc(100% / 2 - 2em);
+            text-align: center;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-flex">
+        <div class="grid-2">
+            <h2>電腦</h2>
+            <img src="images/p.png" alt="" id="computer" class="pic-b">
+        </div>
+        <div class="grid-2 grid-flex">
+            <h2>玩家</h2>
+            <img src="images/c.png" alt="" class="pic-b" id="user-pic">
+            <div class="grid-3"><img src="images/c.png" alt="" class="pic-s"></div>
+            <div class="grid-3"><img src="images/s.png" alt="" class="pic-s"></div>
+            <div class="grid-3"><img src="images/p.png" alt="" class="pic-s"></div>
+        </div>
+    </div>
+    <h1>Start</h1>
+</body>
+</html>
+<script>
+    let x = ["images/c.png","images/s.png","images/p.png"];
+    let cpu = document.getElementById("computer");
+    let h1 = document.getElementsByTagName("h1")[0];
+    
+    let userB = document.getElementById("user-pic");
+    let userS = document.getElementsByClassName("pic-s");
+    for (const i of userS) {
+        i.addEventListener("click",function(){
+            let cputurn = Math.floor(Math.random()*3);
+            cpu.setAttribute("src",x[cputurn]);
+            userB.setAttribute("src",this.getAttribute("src"));
+            if(x[cputurn] == this.getAttribute("src")){
+                h1.textContent = "平手";
+            }else if((cputurn == 0 && this.getAttribute("src") == "images/b.png") || (cpu == 1 && this.getAttribute("src") == "images/c.png") || (cpu == 2 && this.getAttribute("src") == "images/s.png")){
+                h1.textContent = "玩家 輸";
+            }else{
+                h1.textContent = "玩家 贏";
+
+            }
+        })
+    }
+</script>

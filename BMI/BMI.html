@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        .bmicheck{
+            border: 2px solid black;
+            width: 20em;
+            margin: 2em auto;
+            background-color: lightblue;
+        }
+        .bmicheck h1{
+            text-align: center;
+        }
+        .bmicheck input{
+            width: 100%;
+            font-size: 1.5em;
+            padding: 0.2em;
+            margin: 0.5em 0;
+        }
+        .bmicheck button{
+            font-size: 1.5em;
+            padding: 0.5em 1em;
+            cursor: pointer;
+        }
+        .bmicheck h2{
+            padding: 0.5em 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="bmicheck">
+        <h1>BMI檢測</h1>
+        <input type="text" id="height" placeholder="請輸入身高"><br>
+        <input type="text" id="weight" placeholder="請輸入體重"><br>
+        <button type="button" onclick="bmi()">計算</button><br>
+        <h2>您的BMI：<span id="bmi"></span></h2>
+        <h2>您的範圍：<span id="range"></span></h2>
+    </div>
+
+</body>
+</html>
+<script>
+    function bmi(){
+        let h = document.getElementById("height");
+        let w = document.getElementById("weight");
+        let bmiValue = Math.round(w.value / Math.pow((h.value / 100),2));
+        let bmi = document.getElementById("bmi");
+        let range = document.getElementById("range");
+        bmi.textContent = bmiValue;
+        if(isNaN(bmiValue) || bmiValue == 0 || bmiValue == Infinity || bmiValue > 60){
+            range.textContent = "輸入錯誤";
+        }else if(bmiValue < 18){
+            range.textContent = "過瘦";
+            range.style.color = "green";
+            bmi.style.color = "green";
+        }else if(bmiValue < 24){
+            range.textContent = "標準";
+            range.style.color = "black";
+        }else if(bmiValue < 30){
+            range.textContent = "過重";
+            range.style.color = "orange";
+        }else if(bmiValue < 34){
+            range.textContent = "過胖";
+            range.style.color = "red";
+        }else{
+            range.textContent = "過肥";
+            range.style.color = "darkred";
+        }
+        h.value = "";
+        w.value = "";
+    }
+</script>

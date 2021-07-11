@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>帳戶登入</title>
+</head>
+<body>
+    <h3 align="center">帳戶登入</h3>
+    <table border="1" cellpadding="5" cellspacing="0" width="500" height="300" align="center">
+        <tr>
+            <td align="center" style="font-size: 20px;">Username:</td>
+            <td><input type="text" name="username" placeholder="帳號輸入" id="username"></td>
+        </tr>
+        <tr>
+            <td  align="center" style="font-size: 20px;">Password:</td>
+            <td> <input type="password" name="psword" placeholder="密碼輸入" id="psword"> <button type="button" name="btneye" id="btneye">隱藏密碼</button></td>
+        </tr>
+        <tr> <th colspan="2"> <button type="button" id="btn">送出</button> </th></tr>
+    </table>
+    </table>
+</body>
+</html>
+<script>
+    let btn = document.getElementById("btn");
+    btn.addEventListener("click",function(){
+        let username = document.getElementById("username");
+        let psword = document.getElementById("psword");
+        if(username.value=="" || psword.value==""){
+            alert("輸入不完整")
+        }else{
+            alert("送出成功");
+        }
+    })
+
+    let psword = document.getElementById("psword")
+    let btneye = document.getElementById("btneye")
+    btneye.addEventListener("click", function(){
+        if(psword.getAttribute("type") == "password"){
+            psword.setAttribute("type", "text");
+        }else{
+            psword.setAttribute("type", "password");
+        }
+    })
+</script>
