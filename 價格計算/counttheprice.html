@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            border: 2px solid #00569f;
+            margin: 5px;
+            padding: 5px;
+            border-radius:5px;
+            text-align: center;
+            width:50px;
+        }
+        button{
+            border:1px solid #FFF;
+            margin: 5px;
+            padding: 5px;
+            border-radius:5px;
+            text-align: center;
+            width:100px;
+            background-color: #00569f;
+            color:#FFF;
+        }
+        span{
+            color: red;
+            font-weight: 800;
+        }
+    </style>
+</head>
+<body>
+    <p>大俠愛吃漢飽堡($80): <input type="text" id="hamnumId">份</p>
+    <p>蔬果579沙拉吧$($100): <input type="text" id="saladnumId">份</p>
+    <p>夏日炎炎沁涼飲($60): <input type="text" id="drinknumId">份</p>
+    <p><button id="count">金額計算</button></p>
+    <p>總計為<span id="totalprice"> </span>元</p>
+</body>
+</html>
+<script>
+    // 方法1
+    // document.getElementById('count').onclick = function{}
+    // 方法2
+    let submit = document.getElementById('count');
+    submit.addEventListener("click",function(){
+        var hamPrice = 80 ;
+        var saladPrice = 100;
+        var drinlPrice = 60;
+        var hamNum = document.getElementById('hamnumId').value;
+        var saladNum = document.getElementById('saladnumId').value; 
+        var drinkNum = document.getElementById('drinknumId').value;
+        var total = hamPrice*hamNum + saladPrice*saladNum + drinlPrice*drinkNum;
+        document.getElementById('totalprice').textContent=total;
+    })
+</script>
